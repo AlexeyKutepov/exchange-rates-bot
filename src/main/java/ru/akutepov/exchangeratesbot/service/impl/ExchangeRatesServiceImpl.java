@@ -1,6 +1,5 @@
 package ru.akutepov.exchangeratesbot.service.impl;
 
-import jakarta.annotation.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.w3c.dom.Document;
@@ -35,7 +34,6 @@ public class ExchangeRatesServiceImpl implements ExchangeRatesService {
         return extractCurrencyValueFromXML(xml, EUR_XPATH);
     }
 
-    @Nullable
     private static String extractCurrencyValueFromXML(String xml, String xpathExpression)
             throws ServiceException {
         var source = new InputSource(new StringReader(xml));
