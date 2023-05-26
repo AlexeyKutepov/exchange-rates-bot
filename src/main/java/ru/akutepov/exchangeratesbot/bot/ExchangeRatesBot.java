@@ -36,8 +36,8 @@ public class ExchangeRatesBot extends TelegramLongPollingBot {
         if (!update.hasMessage() || !update.getMessage().hasText()) {
             return;
         }
-        String message = update.getMessage().getText();
-        Long chatId = update.getMessage().getChatId();
+        var message = update.getMessage().getText();
+        var chatId = update.getMessage().getChatId();
         switch (message) {
             case START -> {
                 String userName = update.getMessage().getChat().getUserName();
