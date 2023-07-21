@@ -24,13 +24,19 @@ public class ExchangeRatesServiceImpl implements ExchangeRatesService {
 
     @Override
     public String getUSDExchangeRate() throws ServiceException {
-        var xml = client.getCurrencyRatesXML();
+        var xmlOptional = client.getCurrencyRatesXML();
+        String xml = xmlOptional.orElseThrow(
+                () -> new ServiceException("Не удалось получить XML")
+        );
         return extractCurrencyValueFromXML(xml, USD_XPATH);
     }
 
     @Override
     public String getEURExchangeRate() throws ServiceException {
-        var xml = client.getCurrencyRatesXML();
+        var xmlOptional = client.getCurrencyRatesXML();
+        String xml = xmlOptional.orElseThrow(
+                () -> new ServiceException("Не удалось получить XML")
+        );
         return extractCurrencyValueFromXML(xml, EUR_XPATH);
     }
 
